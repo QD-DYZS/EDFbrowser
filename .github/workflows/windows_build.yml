@@ -16,7 +16,7 @@ jobs:
 
     - name: Install Qt4 and MinGW
       # 使用集成好的 Qt4 动作环境，确保符合项目对 4.8.x 版本的偏好
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         version: '4.8.7'
         arch: 'win32_mingw'
