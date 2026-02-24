@@ -12,11 +12,11 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@latest
+      uses: actions/checkout
 
     - name: Install Qt4 and MinGW
       # 使用集成好的 Qt4 动作环境，确保符合项目对 4.8.x 版本的偏好
-      uses: jurplel/install-qt-action@latest
+      uses: jurplel/install-qt-action
       with:
         version: '4.8.7'
         arch: 'win32_mingw'
@@ -30,7 +30,7 @@ jobs:
         mingw32-make -j2
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@latest
+      uses: actions/upload-artifact
       with:
         name: EDFbrowser-Windows-Binary
         path: release/edfbrowser.exe
