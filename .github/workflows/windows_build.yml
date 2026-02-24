@@ -1,0 +1,36 @@
+name: Windows Build (Qt4)
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Qt4 and MinGW
+      # 使用集成好的 Qt4 动作环境，确保符合项目对 4.8.x 版本的偏好
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '4.8.7'
+        arch: 'win32_mingw'
+
+    - name: Build Project
+      shell: cmd
+      run: |
+        # 按照 README 要求的 qmake -> make 流程执行
+        qmake edfbrowser.pro
+        # MinGW 通常使用 mingw32-make
+        mingw32-make -j2
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: EDFbrowser-Windows-Binary
+        path: release/edfbrowser.exe
