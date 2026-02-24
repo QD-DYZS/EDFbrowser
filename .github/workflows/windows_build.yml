@@ -18,7 +18,7 @@ jobs:
       # 使用集成好的 Qt4 动作环境，确保符合项目对 4.8.x 版本的偏好
       uses: jurplel/install-qt-action@v4
       with:
-        version: '4.8.7'
+        version: '5.9.0'
         arch: 'win32_mingw'
 
     - name: Build Project
